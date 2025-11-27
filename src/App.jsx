@@ -1,41 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Layout from "./Layout";
+import Hello from "./Hello";
+import CourseInfo from "./CourseInfo";
+import PrimaryButton from "./PrimaryButton";
+import Card from "./Card";
+import StudentList from "./StudentList";
+import Menu from "./Menu";
+import Counter from "./Counter";
+import CourseDetails from "./CourseDetails";
+import LivePreview from "./LivePreview";
+import TodoApp from "./TodoApp";
+import StudentFilter from "./StudentFilter.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-        <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-        </p>
-        <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-        </p>
-    </>
-  )
+    const students = [
+        { id: 1, name: "Aida", group: "SE-101" },
+        { id: 2, name: "Nurlan", group: "SE-102" },
+        { id: 3, name: "Dastan", group: "SE-103" },
+    ];
+
+    const navLinks = ["Home", "Courses", "About", "Contact"];
+
+    return (
+        <Layout>
+            <Menu links={navLinks} />
+            <Hello />
+            <CourseInfo />
+            <TodoApp />
+            <StudentFilter students={students} />
+            <Card>
+                <h3>Student Directory</h3>
+                <StudentList students={students} />
+            </Card>
+
+            <Counter />
+
+            <CourseDetails />
+
+            <LivePreview />
+
+            <PrimaryButton label="Login" type="primary" />
+            <PrimaryButton label="Register" type="secondary" />
+            <PrimaryButton label="Submit" type="primary" />
+        </Layout>
+    );
 }
 
-export default App
+export default App;
